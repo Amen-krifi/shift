@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SHIFT — Admin</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-secondary-container": "#b3b8c7", "primary-fixed-dim": "#b2d42b", "on-surface": "#e1e2eb", "outline": "#8f937c", "glow-lime": "rgba(217, 253, 83, 0.15)", "primary-fixed": "#cdf148", "outline-variant": "#454935", "surface-card-hover": "#1A2230", "surface-container-low": "#191c22", "surface-tint": "#b2d42b", "on-primary-fixed-variant": "#3e4c00", "text-primary": "#FFFFFF", "on-tertiary": "#2f2f3d", "glow-lime-subtle": "rgba(217, 253, 83, 0.05)", "tertiary-fixed": "#e3e0f3", "secondary": "#c1c6d5", "surface-container": "#1d2026", "inverse-primary": "#536600", "on-primary-container": "#586c00", "surface-border": "#1F2837", "surface-variant": "#32353c", "surface-container-highest": "#32353c", "on-tertiary-container": "#646373", "on-surface-variant": "#c5c9af", "inverse-surface": "#e1e2eb", "inverse-on-surface": "#2e3037", "primary-container": "#cdf148", "secondary-container": "#434956", "on-secondary-fixed-variant": "#414753", "surface-container-high": "#272a31", "surface-border-active": "#2E3C52", "tertiary": "#ffffff", "on-error-container": "#ffdad6", "on-tertiary-fixed": "#1a1a27", "on-secondary-fixed": "#161c27", "on-primary": "#2a3500", "surface-bright": "#363940", "background": "#10131a", "tertiary-container": "#e3e0f3", "on-secondary": "#2b313c", "surface": "#10131a", "error": "#ffb4ab", "error-container": "#93000a", "text-muted": "#9CA3AF", "surface-card": "#121721", "secondary-fixed-dim": "#c1c6d5", "surface-dim": "#10131a", "on-error": "#690005", "secondary-fixed": "#dde2f2", "on-primary-fixed": "#171e00", "on-tertiary-fixed-variant": "#464554", "on-background": "#e1e2eb", "primary": "#ffffff", "tertiary-fixed-dim": "#c7c4d7", "surface-container-lowest": "#0b0e14" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-lg": "1.5rem", "gutter-mobile": "1rem", "space-md": "1rem", "space-3xl": "6rem", "space-sm": "0.5rem", "margin": "3rem", "space-xs": "0.25rem", "margin-mobile": "1.25rem", "space-xl": "2.5rem", "space-2xl": "4rem", "gutter": "1.5rem" }, "fontFamily": { "body-sm": [ "Inter" ], "headline-lg": [ "Plus Jakarta Sans" ], "headline-xl": [ "Plus Jakarta Sans" ], "label-code": [ "JetBrains Mono" ], "kicker": [ "JetBrains Mono" ], "label-badge": [ "JetBrains Mono" ], "headline-sm": [ "Plus Jakarta Sans" ], "body-md": [ "Inter" ], "body-lg": [ "Inter" ] }, "fontSize": { "body-sm": [ "13px", { "lineHeight": "20px", "fontWeight": "400" } ], "headline-lg": [ "28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "headline-sm": [ "20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" } ], "body-md": [ "15px", { "lineHeight": "24px", "fontWeight": "400" } ], "body-lg": [ "18px", { "lineHeight": "28px", "fontWeight": "400" } ], "label-code": [ "12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" } ], "kicker": [ "11px", { "lineHeight": "16px", "letterSpacing": "0.12em", "fontWeight": "600" } ], "label-badge": [ "11px", { "lineHeight": "14px", "letterSpacing": "0.08em", "fontWeight": "600" } ] } } } };</script>
+<style>
+  body { margin:0; }
+  ::-webkit-scrollbar { display:none; }
+  .tab-btn.active { color:#fff; background:#1A2230; }
+  .tab-panel { display:none; }
+  .tab-panel.active { display:block; }
+  input[type=text], input[type=email], input[type=tel], input[type=password], input[type=number], textarea, select {
+    width:100%; background:#0b0e14; color:#fff; border:1px solid #1F2837; border-radius:0.5rem; padding:0.5rem 0.75rem; font-size:14px;
+  }
+  input:focus, textarea:focus, select:focus { outline:2px solid #D9FD53; outline-offset:1px; }
+  label.field-label { font-family:'JetBrains Mono',monospace; font-size:11px; text-transform:uppercase; color:#9CA3AF; letter-spacing:0.05em; }
+</style>
+</head>
+<body class="bg-surface-container-lowest text-on-surface font-body-md text-body-md antialiased min-h-screen">
+
+<!-- ============================ LOGIN VIEW ============================ -->
+<div class="min-h-screen w-full flex items-center justify-center px-4" id="login-view">
+  <div class="w-full max-w-sm bg-surface-card border border-surface-border rounded-xl p-8 flex flex-col gap-4">
+    <div class="flex flex-col mb-2">
+      <span class="font-headline-sm text-headline-sm text-text-primary font-extrabold">SHIFT<span class="text-primary-container">.</span></span>
+      <span class="font-kicker text-kicker text-text-muted uppercase tracking-widest">Admin Console</span>
+    </div>
+    <form id="login-form" class="flex flex-col gap-3">
+      <div class="flex flex-col gap-1">
+        <label class="field-label">Email</label>
+        <input id="login-email" type="email" required placeholder="you@aiesec.net"/>
+      </div>
+      <div class="flex flex-col gap-1">
+        <label class="field-label">Password</label>
+        <input id="login-password" type="password" required placeholder="••••••••"/>
+      </div>
+      <button type="submit" class="mt-2 w-full py-2.5 rounded-full bg-primary-container text-on-primary font-headline-sm text-body-md font-bold hover:shadow-[0_0_20px_rgba(205,241,72,0.4)] transition-all">
+        Sign in
+      </button>
+      <p id="login-error" class="text-error text-body-sm hidden"></p>
+    </form>
+  </div>
+</div>
+
+<!-- ============================= APP VIEW ============================= -->
+<div class="hidden min-h-screen w-full" id="app-view">
+  <header class="border-b border-surface-border bg-surface-card">
+    <div class="max-w-[1200px] mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <div class="flex flex-col">
+        <span class="font-headline-sm text-headline-sm text-text-primary font-extrabold leading-none">SHIFT<span class="text-primary-container">.</span></span>
+        <span class="font-kicker text-kicker text-text-muted uppercase tracking-widest">Admin Console</span>
+      </div>
+      <div class="flex items-center gap-3">
+        <span id="admin-email" class="font-body-sm text-body-sm text-text-muted hidden sm:inline"></span>
+        <button id="logout-btn" class="px-4 py-2 rounded-full bg-surface-container text-on-surface font-label-code text-label-code uppercase hover:bg-surface-container-high transition-colors">Sign out</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="max-w-[1200px] mx-auto px-4 sm:px-6 py-6">
+    <nav class="flex flex-wrap gap-2 mb-6" id="tab-nav">
+      <button class="tab-btn active px-4 py-2 rounded-full font-label-code text-label-code uppercase text-text-muted hover:text-white transition-colors" data-tab="speakers">Speakers</button>
+      <button class="tab-btn px-4 py-2 rounded-full font-label-code text-label-code uppercase text-text-muted hover:text-white transition-colors" data-tab="team">Team</button>
+      <button class="tab-btn px-4 py-2 rounded-full font-label-code text-label-code uppercase text-text-muted hover:text-white transition-colors" data-tab="partners">Partners (displayed)</button>
+      <button class="tab-btn px-4 py-2 rounded-full font-label-code text-label-code uppercase text-text-muted hover:text-white transition-colors" data-tab="applicants">Applicants</button>
+      <button class="tab-btn px-4 py-2 rounded-full font-label-code text-label-code uppercase text-text-muted hover:text-white transition-colors" data-tab="partner-requests">Partner Applications</button>
+    </nav>
+
+    <!-- SPEAKERS TAB -->
+    <section class="tab-panel active" id="panel-speakers">
+      <div class="flex items-center justify-between mb-4">
+        <h2 class="font-headline-lg text-headline-lg text-text-primary font-bold">Speakers</h2>
+        <button class="add-btn px-4 py-2 rounded-full bg-primary-container text-on-primary font-label-code text-label-code uppercase font-bold" data-entity="speakers">+ Add speaker</button>
+      </div>
+      <div id="form-speakers" class="hidden bg-surface-card border border-surface-border rounded-xl p-6 mb-6"></div>
+      <div id="list-speakers" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+    </section>
+
+    <!-- TEAM TAB -->
+    <section class="tab-panel" id="panel-team">
+      <div class="flex items-center justify-between mb-4">
+        <h2 class="font-headline-lg text-headline-lg text-text-primary font-bold">Organizing Team</h2>
+        <button class="add-btn px-4 py-2 rounded-full bg-primary-container text-on-primary font-label-code text-label-code uppercase font-bold" data-entity="team_members">+ Add team member</button>
+      </div>
+      <div id="form-team_members" class="hidden bg-surface-card border border-surface-border rounded-xl p-6 mb-6"></div>
+      <div id="list-team_members" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+    </section>
+
+    <!-- PARTNERS (DISPLAYED) TAB -->
+    <section class="tab-panel" id="panel-partners">
+      <div class="flex items-center justify-between mb-4">
+        <h2 class="font-headline-lg text-headline-lg text-text-primary font-bold">Displayed Partners</h2>
+        <button class="add-btn px-4 py-2 rounded-full bg-primary-container text-on-primary font-label-code text-label-code uppercase font-bold" data-entity="partners">+ Add partner logo</button>
+      </div>
+      <p class="font-body-sm text-body-sm text-text-muted mb-4">These are the logos shown in the "Trusted By" strip on the site. Companies that apply through the website land in the "Partner Applications" tab first — approve them there, then add their logo here.</p>
+      <div id="form-partners" class="hidden bg-surface-card border border-surface-border rounded-xl p-6 mb-6"></div>
+      <div id="list-partners" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4"></div>
+    </section>
+
+    <!-- APPLICANTS TAB -->
+    <section class="tab-panel" id="panel-applicants">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-3">
+        <h2 class="font-headline-lg text-headline-lg text-text-primary font-bold">Applicants <span id="applicants-count" class="text-text-muted font-body-sm"></span></h2>
+        <div class="flex items-center gap-3">
+          <button id="export-applicants-btn" class="px-4 py-2 rounded-full bg-surface-container text-on-surface font-label-code text-label-code uppercase hover:bg-surface-container-high transition-colors">Export CSV</button>
+          <button id="send-reminders-btn" class="px-4 py-2 rounded-full bg-primary-container text-on-primary font-label-code text-label-code uppercase font-bold">Send reminder to everyone</button>
+        </div>
+      </div>
+      <p id="reminders-status" class="font-body-sm text-body-sm text-text-muted mb-4 hidden"></p>
+      <div class="overflow-x-auto bg-surface-card border border-surface-border rounded-xl">
+        <table class="w-full text-left text-body-sm">
+          <thead>
+            <tr class="border-b border-surface-border text-text-muted font-label-code text-label-code uppercase">
+              <th class="p-3">Name</th><th class="p-3">Email</th><th class="p-3">Phone</th><th class="p-3">University</th><th class="p-3">Faculty</th><th class="p-3">Registered</th><th class="p-3">Confirmed</th><th class="p-3">Reminded</th>
+            </tr>
+          </thead>
+          <tbody id="applicants-table-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- PARTNER APPLICATIONS TAB -->
+    <section class="tab-panel" id="panel-partner-requests">
+      <h2 class="font-headline-lg text-headline-lg text-text-primary font-bold mb-4">Partner Applications <span id="partner-requests-count" class="text-text-muted font-body-sm"></span></h2>
+      <div class="overflow-x-auto bg-surface-card border border-surface-border rounded-xl">
+        <table class="w-full text-left text-body-sm">
+          <thead>
+            <tr class="border-b border-surface-border text-text-muted font-label-code text-label-code uppercase">
+              <th class="p-3">Company</th><th class="p-3">Contact</th><th class="p-3">Email</th><th class="p-3">Phone</th><th class="p-3">Message</th><th class="p-3">Status</th><th class="p-3">Received</th>
+            </tr>
+          </thead>
+          <tbody id="partner-requests-table-body"></tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>
